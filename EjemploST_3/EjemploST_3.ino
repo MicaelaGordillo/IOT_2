@@ -102,6 +102,14 @@ void loop(){
             //client.println("<link rel=\"icon\" href=\"data:,\">");
             // CSS to style the on/off buttons Feel free to change the background-color and font-size attributes to fit your preferences
             // client.println("<img src='https://internacional.ucb.edu.bo/wp-content/uploads/2020/10/ucb-logo.png' alt='Bombilla apagada' style='display:block; margin:auto' width='40%'>");
+            if(WiFi.RSSI()>=(-40)){
+              client.println("<div><img style='float:right;' src='https://i.ibb.co/3hwW4kK/wifi.jpg' width='150px'></div>");}
+            if(WiFi.RSSI()<(-40) && WiFi.RSSI()>=(-50)){
+              client.println("<div><img style='float:right;' src='https://i.ibb.co/7SmCNzN/wifi2.jpg' width='150px'></div>");}
+            if(WiFi.RSSI()<(-50) && WiFi.RSSI()>=(-60)){
+              client.println("<div><img style='float:right;' src='https://i.ibb.co/zJF9dgB/wifi3.jpg' width='150px'></div>");}
+            if(WiFi.RSSI()<(-60)){
+              client.println("<div><img style='float:right;' src='https://i.ibb.co/Sr0VFW3/wifi4.jpg' width='150px'></div>");}
             client.println("<div style='margin-top: 15px; margin-left: 30px; margin-bottom: 15px;'><img src='https://lpz.ucb.edu.bo/wp-content/uploads/2022/05/Logo-aniversario-22.jpg' style='display:block; margin:auto' width='35%'></div>");
             client.println("<style>html { font-family: Helvetica; display: inline-block; margin: 0px auto; text-align: center;}</style></head>");
             client.print("<div style='width: 100%; height: 10px; background-color: #164275;'></div>");
