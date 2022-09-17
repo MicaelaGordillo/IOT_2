@@ -14,7 +14,10 @@ const int ROJO = 22;
 const int VERDE = 23;
 int pulsador = 25;                        // Estado del pulsador
 int contador = 0;
- 
+//Potenciometro
+int potPin = 32;
+int potValue = 0;
+double valorPorcentaje=0;
 void setup() {
   Serial.begin(115200);
   // Initialize the output variables as outputs
@@ -102,21 +105,17 @@ void loop(){
             //client.println("<link rel=\"icon\" href=\"data:,\">");
             // CSS to style the on/off buttons Feel free to change the background-color and font-size attributes to fit your preferences
             // client.println("<img src='https://internacional.ucb.edu.bo/wp-content/uploads/2020/10/ucb-logo.png' alt='Bombilla apagada' style='display:block; margin:auto' width='40%'>");
-            client.println("<div style='margin-top: 15px; margin-left: 30px; margin-bottom: 15px;'><img src='https://lpz.ucb.edu.bo/wp-content/uploads/2022/05/Logo-aniversario-22.jpg' style='display:block; margin:auto' width='35%'></div>");
-            client.println("<style>html { font-family: Helvetica; display: inline-block; margin: 0px auto; text-align: center;}</style></head>");
+            client.print("<div style='margin-top: 15px; margin-left: 30px; margin-bottom: 15px;'><img src='https://lpz.ucb.edu.bo/wp-content/uploads/2022/05/Logo-aniversario-22.jpg' style='display:block; margin:auto' width='35%'></div>");
+            client.print("<style>@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap');html { font-family: 'Quicksand'; display: inline-block; margin: 0px auto; text-align: center;}.styled-table {border-radius: 20px;border-collapse: collapse;margin: 25px 0;font-size: 0.9em;min-width: 400px;box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);}");  
+            client.print(".styled-table thead tr {background-color: #009879;color: #ffffff;text-align: left;}.styled-table th,.styled-table td {padding: 12px 15px;}.styled-table tbody tr {border-bottom: 1px solid #dddddd;}.styled-table tbody tr:nth-of-type(even){background-color: #f3f3f3;}.styled-table tbody tr:last-of-type {border-bottom: 2px solid #009879;}.styled-table tbody tr.active-row {font-weight: bold;color: #009879;}</style></head>");
             client.print("<div style='width: 100%; height: 10px; background-color: #164275;'></div>");
             client.print("<center>");
             // Encabezado de la página web
             client.println("<body>");//<h1>ESP32 Web Server</h1>");
-            //Imprime la lectura de ADC
-            //client.print("<h1>El valor del ADC: ");                 
-            //client.print(String(analogRead(36))+"</h1>");   
-            //Imprime un contador
-            //client.print("<h1>Contador : ");                 
-            //client.print(String(contador)+"</h1>");    
+               
             contador++;  
             client.println("");
-            client.println("<div style='display: grid; grid-template-columns: repeat(3, 1fr); font-family: Yusei Magic, sans-serif;'><div style='display: grid; grid-template-rows: (3, fr);'><div>"); 
+            client.println("<div style='display: grid; grid-template-columns: repeat(3, 1fr);'><div style='display: grid; grid-template-rows: (3, fr);'><div>"); 
             // Muestra el estado actual y los botones ON/OFF para GPIO 19 
             client.println("<p>AZUL - State " + AZULState + "</p>");
             // Si AZULState está apagado, muestra el botón ON      
@@ -150,13 +149,30 @@ void loop(){
             } else {
               client.print("<div style='display: flex; justify-content: center;'><img src='https://www.clker.com/cliparts/4/8/d/d/11949847561597560220button-seagreen_benji_pa_01.svg.med.png'  width='100px'></div>");
             }
-            client.println("</div></div><div></div></div></div></body>");        
-            client.print("<h1>Informacion de la conecccion </h1>"); 
+            valorPorcentaje = (potValue*100)/4893;
+            if(potValue==0){
+              client.println("</div></div><div><h3>Valor del adc: </h3><img style='width: 50%;margin-top: 5px;' src='https://raw.githubusercontent.com/MicaelaGordillo/IOT_2/main/EjemploST_3/images/bateria0.jpg' alt='bateria'><p>"+String(valorPorcentaje)+"%</p></div></div>");
+            }else if(potValue<978){
+              client.println("</div></div><div><h3>Valor del adc: </h3><img style='width: 50%;margin-top: 5px;' src='https://raw.githubusercontent.com/MicaelaGordillo/IOT_2/main/EjemploST_3/images/bateria20.jpg' alt='bateria'><p>"+String(valorPorcentaje)+"%</p></div></div>");
+            }else if(potValue>=979&&potValue<1957){
+              client.println("</div></div><div><h3>Valor del adc: </h3><img style='width: 50%;margin-top: 5px;' src='https://raw.githubusercontent.com/MicaelaGordillo/IOT_2/main/EjemploST_3/images/bateria40.jpg' alt='bateria'><p>"+String(valorPorcentaje)+"%</p></div></div>");
+            }else if(potValue>=1958&&potValue<2935){
+              client.println("</div></div><div><h3>Valor del adc: </h3><img style='width: 50%;margin-top: 5px;' src='https://raw.githubusercontent.com/MicaelaGordillo/IOT_2/main/EjemploST_3/images/bateria60.jpg' alt='bateria'><p>"+String(valorPorcentaje)+"%</p></div></div>");
+            }else if(potValue>=2936&&potValue<3914){
+              client.println("</div></div><div><h3>Valor del adc: </h3><img style='width: 50%;margin-top: 5px;' src='https://raw.githubusercontent.com/MicaelaGordillo/IOT_2/main/EjemploST_3/images/bateria80.jpg' alt='bateria'><p>"+String(valorPorcentaje)+"%</p></div></div>");
+            }else{
+              client.println("</div></div><div><h3>Valor del adc: </h3><img style='width: 50%;margin-top: 5px;' src='https://raw.githubusercontent.com/MicaelaGordillo/IOT_2/main/EjemploST_3/images/bateria100.jpg' alt='bateria'><p>"+String(valorPorcentaje)+"%</p></div></div>");
+            }
+            
+            
+
+            client.print("<div style='display: grid; grid-template-rows:80px 1fr 1fr 1fr; background-color: rgb(160, 18, 18);'><h2>Integrantes: </h2><div style='background-color: #658b62;'><p>Yamil Barrientos</p></div><div style='background-color: #8b6281;'><p>Micaela Gordillo</p></div><div style='background-color: #626f8b;'><p>Naomi Tacachira</p></div></div></div></body>");       
+            client.print("<h1>Informacion de la conexion </h1>"); 
             client.print("</div>");
             client.print("<center>");
             client.print("<div style='width: 90%; margin-top: 120px;transition: 1s;' class='ampliacion'>");
-            client.print("<table style='font-size: 20px;width:100%; background-color:#ffffff; text-align: center; border-collapse: collapse;border-right: solid 1px #164275; border-left:solid 1px #164275; border-bottom: solid 1px #164275;'>");
-            client.print("<thead style='background-color: #164275; color: white; border-bottom: solid 5px #071b33;'>");
+            client.print("<table class='styled-table'>");
+            client.print("<thead>");
             client.print("<tr><th style=' padding: 20px;'>IP Local</th><th style=' padding: 20px; '>Host Name</th><th style=' padding: 20px; '>Status</th><th style=' padding: 20px; '>SSID</th><th style=' padding: 20px; '>PSK</th><th style=' padding: 20px; '>BSSID</th><th style=' padding: 20px; '>RSSI</th></tr>");
             client.print("</thead>");
             client.print("<tr>");
@@ -206,4 +222,7 @@ void loop(){
     Serial.println("Client disconnected.");
     Serial.println("");
   }
+  //ADC
+  potValue = analogRead(potPin);
+  delay(50);
 }
