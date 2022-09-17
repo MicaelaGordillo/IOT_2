@@ -104,11 +104,6 @@ void loop(){
             //client.println("<link rel=\"icon\" href=\"data:,\">");
             // CSS to style the on/off buttons Feel free to change the background-color and font-size attributes to fit your preferences
             // client.println("<img src='https://internacional.ucb.edu.bo/wp-content/uploads/2020/10/ucb-logo.png' alt='Bombilla apagada' style='display:block; margin:auto' width='40%'>");
-
-            client.print("<div style='margin-top: 15px; margin-left: 30px; margin-bottom: 15px;'><img src='https://lpz.ucb.edu.bo/wp-content/uploads/2022/05/Logo-aniversario-22.jpg' style='display:block; margin:auto' width='35%'></div>");
-            client.print("<style>@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap');html { font-family: 'Quicksand'; display: inline-block; margin: 0px auto; text-align: center;}.styled-table {border-radius: 20px;border-collapse: collapse;margin: 25px 0;font-size: 0.9em;min-width: 400px;box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);}");  
-            client.print(".styled-table thead tr {background-color: #009879;color: #ffffff;text-align: left;}.styled-table th,.styled-table td {padding: 12px 15px;}.styled-table tbody tr {border-bottom: 1px solid #dddddd;}.styled-table tbody tr:nth-of-type(even){background-color: #f3f3f3;}.styled-table tbody tr:last-of-type {border-bottom: 2px solid #009879;}.styled-table tbody tr.active-row {font-weight: bold;color: #009879;}</style></head>");
-
             if(WiFi.RSSI()>=(-40)){
               client.println("<div><img style='float:right;' src='https://i.ibb.co/3hwW4kK/wifi.jpg' width='150px'></div>");}
             if(WiFi.RSSI()<(-40) && WiFi.RSSI()>=(-50)){
@@ -117,7 +112,9 @@ void loop(){
               client.println("<div><img style='float:right;' src='https://i.ibb.co/zJF9dgB/wifi3.jpg' width='150px'></div>");}
             if(WiFi.RSSI()<(-60)){
               client.println("<div><img style='float:right;' src='https://i.ibb.co/Sr0VFW3/wifi4.jpg' width='150px'></div>");}
-
+            client.print("<div style='margin-top: 15px; margin-left: 30px; margin-bottom: 15px;'><img src='https://lpz.ucb.edu.bo/wp-content/uploads/2022/05/Logo-aniversario-22.jpg' style='display:block; margin:auto' width='35%'></div>");
+            client.print("<style>@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap');html { font-family: 'Quicksand'; display: inline-block; margin: 0px auto; text-align: center;}.styled-table {border-radius: 20px;border-collapse: collapse;margin: 25px 0;font-size: 0.9em;min-width: 400px;box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);}");  
+            client.print(".styled-table thead tr {background-color: #009879;color: #ffffff;text-align: left;}.styled-table th,.styled-table td {padding: 12px 15px;}.styled-table tbody tr {border-bottom: 1px solid #dddddd;}.styled-table tbody tr:nth-of-type(even){background-color: #f3f3f3;}.styled-table tbody tr:last-of-type {border-bottom: 2px solid #009879;}.styled-table tbody tr.active-row {font-weight: bold;color: #009879;}</style></head>");
             client.print("<div style='width: 100%; height: 10px; background-color: #164275;'></div>");
             client.print("<center>");
             // Encabezado de la página web
