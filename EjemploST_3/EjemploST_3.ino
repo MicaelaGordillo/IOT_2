@@ -99,7 +99,7 @@ void loop(){
             }
            // Display the HTML web page
             client.println("<!DOCTYPE html><html>");
-            client.println("<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">");
+            client.println("<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><meta charset=\"utf-8\">");
             client.println("<link href='https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap' rel='stylesheet'>");
             //client.println("<link rel=\"icon\" href=\"data:,\">");
             // CSS to style the on/off buttons Feel free to change the background-color and font-size attributes to fit your preferences
@@ -114,7 +114,8 @@ void loop(){
               client.println("<div><img style='float:right;' src='https://i.ibb.co/Sr0VFW3/wifi4.jpg' width='150px'></div>");}
             client.print("<div style='margin-top: 15px; margin-left: 30px; margin-bottom: 15px;'><img src='https://lpz.ucb.edu.bo/wp-content/uploads/2022/05/Logo-aniversario-22.jpg' style='display:block; margin:auto' width='35%'></div>");
             client.print("<style>@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap');html { font-family: 'Quicksand'; display: inline-block; margin: 0px auto; text-align: center;}.styled-table {border-radius: 20px;border-collapse: collapse;margin: 25px 0;font-size: 0.9em;min-width: 400px;box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);}");  
-            client.print(".styled-table thead tr {background-color: #009879;color: #ffffff;text-align: left;}.styled-table th,.styled-table td {padding: 12px 15px;}.styled-table tbody tr {border-bottom: 1px solid #dddddd;}.styled-table tbody tr:nth-of-type(even){background-color: #f3f3f3;}.styled-table tbody tr:last-of-type {border-bottom: 2px solid #009879;}.styled-table tbody tr.active-row {font-weight: bold;color: #009879;}</style></head>");
+            client.print(".styled-table thead tr {background-color: #009879;color: #ffffff;text-align: left;}.styled-table th,.styled-table td {padding: 12px 15px;}.styled-table tbody tr {border-bottom: 1px solid #dddddd;}.styled-table tbody tr:nth-of-type(even){background-color: #f3f3f3;}.styled-table tbody tr:last-of-type {border-bottom: 2px solid #009879;}.styled-table tbody tr.active-row {font-weight: bold;color: #009879;}");
+            client.print(".caption .social-links a{ color: #333; margin-right: 15px; font-size: 21px; transition: .6s; } .social-links a:hover{ color: #0c52a1; } .caption{ text-align: center; transform: translateY(-110px); opacity: 0; transition: .6s; } .profile-card:hover .caption{ opacity: 1; } .caption h3{ font-size: 18px; } .caption p{ font-size: 15px; color: #0c52a1; margin: 2px 0 9px 0; } .profile-card:hover .img{ transform: translateY(-60px); } .profile-card:hover img{ border-radius: 10px; } .profile-card .img{ position: relative; width: 100%; height: 100%; transition: .6s; z-index: 99; } .img img{ width: 100%; border-radius: 50%; box-shadow: 0 0 22px #3336; transition: .6s; } .profile-card:hover{ border-radius: 10px; height: 200px; } .profile-card{ position: relative; width: 150px; height: 150px; background: #fff; padding: 10px; border-radius: 50%; box-shadow: 0 0 22px #3336; transition: .6s; }</style></head>");
             client.print("<div style='width: 100%; height: 10px; background-color: #164275;'></div>");
             client.print("<center>");
             // Encabezado de la página web
@@ -147,7 +148,7 @@ void loop(){
             } else {
               client.print("<div style='display: inline-flex; margin: 0% 10%;'><img src='http://www.clker.com/cliparts/5/7/b/5/1194989231691813435led_circle_red.svg.med.png'  width='100px'><input type='image' src='http://esploradores.com/Practicas_html/apagar_300x88.png' style='display:block; margin:auto' width='40%' onClick=location.href='/21/off'></div>");   
             }  
-            client.println("</div></div><div style='display: grid; grid-template-rows: repeat(2, 1fr);'><div style='display:flex; align-items: center; justify-content: center;'><div><p>Pulsador</p>");
+            client.println("</div></div><div style='display: grid; grid-template-rows: repeat(2, 1fr);'><div style='display:flex; align-items: center; justify-content: center;'><div><h3>Pulsador</h3>");
             //Imprime la lectura de un pulsador
             //client.print("<h1>El estado del pulsador: ");                 
             //client.print(String(digitalRead(pulsador))+"</h1>");
@@ -158,26 +159,26 @@ void loop(){
             }
             valorPorcentaje = (potValue*100)/4893;
             if(potValue==0){
-              client.println("</div></div><div><h3>Valor del adc: </h3><img style='width: 50%;margin-top: 5px;' src='https://raw.githubusercontent.com/MicaelaGordillo/IOT_2/main/EjemploST_3/images/bateria0.jpg' alt='bateria'><p>"+String(valorPorcentaje)+"%</p></div></div>");
+              client.println("</div></div><div><h3>Valor del adc: "+String(potValue)+"</h3><img style='width: 50%;margin-top: 5px;' src='https://raw.githubusercontent.com/MicaelaGordillo/IOT_2/main/EjemploST_3/images/bateria0.jpg' alt='bateria'><p>"+String(valorPorcentaje)+"%</p></div></div>");
             }else if(potValue<978){
-              client.println("</div></div><div><h3>Valor del adc: </h3><img style='width: 50%;margin-top: 5px;' src='https://raw.githubusercontent.com/MicaelaGordillo/IOT_2/main/EjemploST_3/images/bateria20.jpg' alt='bateria'><p>"+String(valorPorcentaje)+"%</p></div></div>");
+              client.println("</div></div><div><h3>Valor del adc: "+String(potValue)+"</h3><img style='width: 50%;margin-top: 5px;' src='https://raw.githubusercontent.com/MicaelaGordillo/IOT_2/main/EjemploST_3/images/bateria20.jpg' alt='bateria'><p>"+String(valorPorcentaje)+"%</p></div></div>");
             }else if(potValue>=979&&potValue<1957){
-              client.println("</div></div><div><h3>Valor del adc: </h3><img style='width: 50%;margin-top: 5px;' src='https://raw.githubusercontent.com/MicaelaGordillo/IOT_2/main/EjemploST_3/images/bateria40.jpg' alt='bateria'><p>"+String(valorPorcentaje)+"%</p></div></div>");
+              client.println("</div></div><div><h3>Valor del adc: "+String(potValue)+"</h3><img style='width: 50%;margin-top: 5px;' src='https://raw.githubusercontent.com/MicaelaGordillo/IOT_2/main/EjemploST_3/images/bateria40.jpg' alt='bateria'><p>"+String(valorPorcentaje)+"%</p></div></div>");
             }else if(potValue>=1958&&potValue<2935){
-              client.println("</div></div><div><h3>Valor del adc: </h3><img style='width: 50%;margin-top: 5px;' src='https://raw.githubusercontent.com/MicaelaGordillo/IOT_2/main/EjemploST_3/images/bateria60.jpg' alt='bateria'><p>"+String(valorPorcentaje)+"%</p></div></div>");
+              client.println("</div></div><div><h3>Valor del adc: "+String(potValue)+"</h3><img style='width: 50%;margin-top: 5px;' src='https://raw.githubusercontent.com/MicaelaGordillo/IOT_2/main/EjemploST_3/images/bateria60.jpg' alt='bateria'><p>"+String(valorPorcentaje)+"%</p></div></div>");
             }else if(potValue>=2936&&potValue<3914){
-              client.println("</div></div><div><h3>Valor del adc: </h3><img style='width: 50%;margin-top: 5px;' src='https://raw.githubusercontent.com/MicaelaGordillo/IOT_2/main/EjemploST_3/images/bateria80.jpg' alt='bateria'><p>"+String(valorPorcentaje)+"%</p></div></div>");
+              client.println("</div></div><div><h3>Valor del adc: "+String(potValue)+"</h3><img style='width: 50%;margin-top: 5px;' src='https://raw.githubusercontent.com/MicaelaGordillo/IOT_2/main/EjemploST_3/images/bateria80.jpg' alt='bateria'><p>"+String(valorPorcentaje)+"%</p></div></div>");
             }else{
-              client.println("</div></div><div><h3>Valor del adc: </h3><img style='width: 50%;margin-top: 5px;' src='https://raw.githubusercontent.com/MicaelaGordillo/IOT_2/main/EjemploST_3/images/bateria100.jpg' alt='bateria'><p>"+String(valorPorcentaje)+"%</p></div></div>");
+              client.println("</div></div><div><h3>Valor del adc: "+String(potValue)+"</h3><img style='width: 50%;margin-top: 5px;' src='https://raw.githubusercontent.com/MicaelaGordillo/IOT_2/main/EjemploST_3/images/bateria100.jpg' alt='bateria'><p>"+String(valorPorcentaje)+"%</p></div></div>");
             }
-            
-            
-
-            client.print("<div style='display: grid; grid-template-rows:80px 1fr 1fr 1fr; background-color: rgb(160, 18, 18);'><h2>Integrantes: </h2><div style='background-color: #658b62;'><p>Yamil Barrientos</p></div><div style='background-color: #8b6281;'><p>Micaela Gordillo</p></div><div style='background-color: #626f8b;'><p>Naomi Tacachira</p></div></div></div></body>");       
-            client.print("<h1>Informacion de la conexion </h1>"); 
+            // Tarjetas
+            client.print("<div style=\"display: grid; grid-template-rows:80px 1fr 1fr 1fr; align-items: center; justify-content: center;\"><h2>Integrantes: </h2><div class='profile-card'><div class='img'><img src=\"https://raw.githubusercontent.com/MicaelaGordillo/IOT_2/main/EjemploST_3/images/fotos/WhatsApp%20Image%202022-09-16%20at%206.33.07%20PM.jpeg\"></div><div class=\"caption\"><h3>Yamil Barrientos</h3><p>Estudiante</p><div class=\"social-links\"><a href=\"#\"><i class=\"fab fa-facebook\"></i></a><a href=\"#\"><i class=\"fab fa-instagram\"></i></a><a href=\"#\"><i class=\"fab fa-twitter\"></i></a></div></div></div>");
+            client.print("<div class=\"profile-card\"> <div class=\"img\"><img src=\"https://raw.githubusercontent.com/MicaelaGordillo/IOT_2/main/EjemploST_3/images/fotos/WhatsApp%20Image%202022-09-16%20at%207.02.45%20PM.jpeg\"></div><div class=\"caption\"><h3>Micaela Gordillo</h3><p>Estudiante</p><div class=\"social-links\"><a href=\"#\"><i class=\"fab fa-facebook\"></i></a><a href=\"#\"><i class=\"fab fa-instagram\"></i></a><a href=\"#\"><i class=\"fab fa-twitter\"></i></a></div></div></div>");
+            client.print("<div class=\"profile-card\"><div class=\"img\"><img src=\"https://raw.githubusercontent.com/MicaelaGordillo/IOT_2/main/EjemploST_3/images/fotos/IMG_20210715_162333.jpg\"></div><div class=\"caption\"><h3>Naomi Tacachira</h3><p>Estudiante</p><div class=\"social-links\"><a href=\"#\"><i class=\"fab fa-facebook\"></i></a><a href=\"#\"><i class=\"fab fa-instagram\"></i></a><a href=\"#\"><i class=\"fab fa-twitter\"></i></a></div></div></div></div></div></body>");       
+            client.print("<h1>Información de la conexión </h1>"); 
             client.print("</div>");
             client.print("<center>");
-            client.print("<div style='width: 90%; margin-top: 120px;transition: 1s;' class='ampliacion'>");
+            client.print("<div style='width: 90%; margin-top: 20px;transition: 1s;' class='ampliacion'>");
             client.print("<table class='styled-table'>");
             client.print("<thead>");
             client.print("<tr><th style=' padding: 20px;'>IP Local</th><th style=' padding: 20px; '>Host Name</th><th style=' padding: 20px; '>Status</th><th style=' padding: 20px; '>SSID</th><th style=' padding: 20px; '>PSK</th><th style=' padding: 20px; '>BSSID</th><th style=' padding: 20px; '>RSSI</th></tr>");
@@ -187,7 +188,7 @@ void loop(){
             client.print(WiFi.localIP().toString().c_str());   
             client.print("</td>");
             client.print("<td style='padding: 20px;text-align: center;'class='changecolor'>");
-            //client.print(WiFi.hostname().c_str());   
+            client.print(WiFi.getHostname());   
             client.print("</td>");
             client.print("<td style='padding: 20px;text-align: center;'class='changecolor'>");
             client.print(WiFi.status());   
@@ -209,6 +210,7 @@ void loop(){
             client.print("</div>");
             client.print("</center>");
             client.print("</center>");
+            client.print("<script src='https://kit.fontawesome.com/d32f40f0ab.js' crossorigin='anonymous'></script>");
             client.println("</html>");  
             // La respuesta HTTP termina con otra línea en blanco
             client.println();
