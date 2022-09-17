@@ -77,8 +77,8 @@ void loop(){
   client.print("</style>");  
   client.print("<div style='width: 100%; height: 10px; background-color: #164275;'></div>");
   client.print("<div style='width: 100%; height: 200px; display:inline-flex; margin-top: 10px; margin-bottom: 10px;'>");
-  client.print("<div style='margin-top: 15px; margin-left: 30px; margin-bottom: 15px;'><img src='https://ucblpz.com/wp-content/uploads/2018/12/UCB-logo-lapaz.png'></div>");
-  client.print("<div style='text-align: right; margin-left: 150px; margin-top: 50px;'><h1 style='color: #164275; font-size: 40px;'>Internet de las cosas</h1></div>");
+  client.print("<div style='margin-top: 15px; margin-left: 30px; margin-bottom: 15px;'><img src='https://1.bp.blogspot.com/-OiwafvwrPK0/YOnSlkGUGqI/AAAAAAAATQY/k9mA1j41NyYkMC_D0EvJQfDF-4dB-bzUgCLcBGAsYHQ/s1200/PAG-32-1.jpg' width='300px'></div>");
+  client.print("<div style='text-align:center; margin-left: 350px; margin-top: 50px;'><h1 style='color: #164275; font-size: 40px;'>Internet de las cosas</h1></div>");
   client.print("</div>");
   client.print("<div style='width: 100%; height: 10px; background-color: #164275;'></div>");
   client.print("<center>");
